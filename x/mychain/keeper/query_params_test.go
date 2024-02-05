@@ -3,18 +3,19 @@ package keeper_test
 import (
 	"testing"
 
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
-
-	keepertest "github.com/foxytanuki/mychain/testutil/keeper"
-	"github.com/foxytanuki/mychain/x/mychain/types"
+	testkeeper "mychain/testutil/keeper"
+	"mychain/x/mychain/types"
 )
 
 func TestParamsQuery(t *testing.T) {
-	keeper, ctx := keepertest.MychainKeeper(t)
+	keeper, ctx := testkeeper.MychainKeeper(t)
+	wctx := sdk.WrapSDKContext(ctx)
 	params := types.DefaultParams()
-	require.NoError(t, keeper.SetParams(ctx, params))
+	keeper.SetParams(ctx, params)
 
-	response, err := keeper.Params(ctx, &types.QueryParamsRequest{})
+	response, err := keeper.Params(wctx, &types.QueryParamsRequest{})
 	require.NoError(t, err)
 	require.Equal(t, &types.QueryParamsResponse{Params: params}, response)
 }

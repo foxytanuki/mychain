@@ -3,8 +3,8 @@ package types_test
 import (
 	"testing"
 
-	"github.com/foxytanuki/mychain/x/mychain/types"
 	"github.com/stretchr/testify/require"
+	"mychain/x/mychain/types"
 )
 
 func TestGenesisState_Validate(t *testing.T) {

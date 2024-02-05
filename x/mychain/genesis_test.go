@@ -3,11 +3,11 @@ package mychain_test
 import (
 	"testing"
 
-	keepertest "github.com/foxytanuki/mychain/testutil/keeper"
-	"github.com/foxytanuki/mychain/testutil/nullify"
-	"github.com/foxytanuki/mychain/x/mychain/module"
-	"github.com/foxytanuki/mychain/x/mychain/types"
 	"github.com/stretchr/testify/require"
+	keepertest "mychain/testutil/keeper"
+	"mychain/testutil/nullify"
+	"mychain/x/mychain"
+	"mychain/x/mychain/types"
 )
 
 func TestGenesis(t *testing.T) {
@@ -18,8 +18,8 @@ func TestGenesis(t *testing.T) {
 	}
 
 	k, ctx := keepertest.MychainKeeper(t)
-	mychain.InitGenesis(ctx, k, genesisState)
-	got := mychain.ExportGenesis(ctx, k)
+	mychain.InitGenesis(ctx, *k, genesisState)
+	got := mychain.ExportGenesis(ctx, *k)
 	require.NotNil(t, got)
 
 	nullify.Fill(&genesisState)

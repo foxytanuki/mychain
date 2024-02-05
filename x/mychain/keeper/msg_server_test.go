@@ -4,21 +4,20 @@ import (
 	"context"
 	"testing"
 
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
-
-	keepertest "github.com/foxytanuki/mychain/testutil/keeper"
-	"github.com/foxytanuki/mychain/x/mychain/keeper"
-	"github.com/foxytanuki/mychain/x/mychain/types"
+	keepertest "mychain/testutil/keeper"
+	"mychain/x/mychain/keeper"
+	"mychain/x/mychain/types"
 )
 
-func setupMsgServer(t testing.TB) (keeper.Keeper, types.MsgServer, context.Context) {
+func setupMsgServer(t testing.TB) (types.MsgServer, context.Context) {
 	k, ctx := keepertest.MychainKeeper(t)
-	return k, keeper.NewMsgServerImpl(k), ctx
+	return keeper.NewMsgServerImpl(*k), sdk.WrapSDKContext(ctx)
 }
 
 func TestMsgServer(t *testing.T) {
-	k, ms, ctx := setupMsgServer(t)
+	ms, ctx := setupMsgServer(t)
 	require.NotNil(t, ms)
 	require.NotNil(t, ctx)
-	require.NotEmpty(t, k)
 }

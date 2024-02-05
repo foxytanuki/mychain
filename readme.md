@@ -15,14 +15,15 @@ Your blockchain in development can be configured with `config.yml`. To learn mor
 
 ### Web Frontend
 
-Additionally, Ignite CLI offers both Vue and React options for frontend scaffolding:
+Ignite CLI has scaffolded a Vue.js-based web app in the `vue` directory. Run the following commands to install dependencies and start the app:
 
-For a Vue frontend, use: `ignite scaffold vue`
-For a React frontend, use: `ignite scaffold react`
-These commands can be run within your scaffolded blockchain project. 
+```
+cd vue
+npm install
+npm run serve
+```
 
-
-For more information see the [monorepo for Ignite front-end development](https://github.com/ignite/web).
+The frontend app is built using the `@starport/vue` and `@starport/vuex` packages. For details, see the [monorepo for Ignite front-end development](https://github.com/ignite/web).
 
 ## Release
 To release a new version of your blockchain, create and push a new tag with `v` prefix. A new draft release with the configured targets will be created.
@@ -38,9 +39,9 @@ After a draft release is created, make your final changes from the release page 
 To install the latest version of your blockchain node's binary, execute the following command on your machine:
 
 ```
-curl https://get.ignite.com/foxytanuki/mychain@latest! | sudo bash
+curl https://get.ignite.com/username/mychain@latest! | sudo bash
 ```
-`foxytanuki/mychain` should match the `username` and `repo_name` of the Github repository to which the source code was pushed. Learn more about [the install process](https://github.com/allinbits/starport-installer).
+`username/mychain` should match the `username` and `repo_name` of the Github repository to which the source code was pushed. Learn more about [the install process](https://github.com/allinbits/starport-installer).
 
 ## Learn more
 

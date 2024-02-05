@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/foxytanuki/mychain/x/mychain/types"
+	"mychain/x/mychain/types"
 )
 
 type msgServer struct {
